@@ -349,46 +349,34 @@ inline void binary_tree<T>::doBalance()
 			// SET
 			binary_node<T>* Y = root;
 			binary_node<T>* X = Y->rightChild;
-			binary_node<T>* alpha = Y->leftChild;
 			binary_node<T>* beta = X->leftChild;
-			binary_node<T>* gamma = X->rightChild;
 			// RESET
 			root = X;
 			X->leftChild = Y;
-			X->rightChild = gamma;
-			Y->leftChild = alpha;
 			Y->rightChild = beta;
 		}
 		else if (subBalance(root) == 2 && subBalance(root->rightChild) == 1) { // DO RIGHT TURN
 			// SET
 			binary_node<T>* Y = root;
 			binary_node<T>* X = Y->leftChild;
-			binary_node<T>* alpha = X->leftChild;
 			binary_node<T>* beta = X->rightChild;
-			binary_node<T>* gamma = Y->rightChild;
 			// RESET
 			root = X;
-			X->leftChild = alpha;
 			X->rightChild = Y;
 			Y->leftChild = beta;
-			Y->rightChild = gamma;
 		}
 		else if (subBalance(root) == 2 && subBalance(root->rightChild) == -1) { // DO RIGHT & LEFT TURN
 			// SET
 			binary_node<T>* Z = root;
 			binary_node<T>* Y = Z->rightChild;
 			binary_node<T>* X = Y->leftChild;
-			binary_node<T>* alpha = Z->leftChild;
 			binary_node<T>* beta = X->leftChild;
 			binary_node<T>* gamma = X->rightChild;
-			binary_node<T>* theta = Y->rightChild;
 			// RESET
 			root = X;
 			X->leftChild = Z;
 			X->rightChild = Y;
 			Y->leftChild = gamma;
-			Y->rightChild = theta;
-			Z->leftChild = alpha;
 			Z->rightChild = beta;
 		}
 		else if (subBalance(root) == -2 && subBalance(root->leftChild) == 1) { // DO LEFT & RIGHT TURN
@@ -396,18 +384,14 @@ inline void binary_tree<T>::doBalance()
 			binary_node<T>* Z = root;
 			binary_node<T>* Y = Z->leftChild;
 			binary_node<T>* X = Y->rightChild;
-			binary_node<T>* alpha = Y->leftChild;
 			binary_node<T>* beta = X->leftChild;
 			binary_node<T>* gamma = X->rightChild;
-			binary_node<T>* theta = Z->rightChild;
 			// RESET
 			root = X;
 			X->leftChild = Y;
 			X->rightChild = Z;
-			Y->leftChild = alpha;
 			Y->rightChild = beta;
 			Z->leftChild = gamma;
-			Z->rightChild = theta;
 		}
 	}
 }
